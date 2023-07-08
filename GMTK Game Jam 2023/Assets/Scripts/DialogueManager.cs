@@ -52,10 +52,22 @@ public class DialogueManager : MonoBehaviour {
     }
 
     private void EndDialogue() {
-        Debug.Log("EndDialogue()");
+        
         inDialogue = false;
-        if (gameManager.currentGameState == GameManager.GameState.DIALOGUE1) {
-            gameManager.currentGameState = GameManager.GameState.CHOICES;
+        switch (gameManager.currentGameState) {
+            case GameManager.GameState.DIALOGUE1:
+                Debug.Log("Dialogue 1 over");
+                gameManager.currentGameState = GameManager.GameState.CHOICES;
+                break;
+            case GameManager.GameState.DIALOGUE2:
+                Debug.Log("Dialogue 2 over");
+                gameManager.currentGameState = GameManager.GameState.DIALOGUE3;
+                StartCoroutine(gameManager.handleResponse());
+                break;
+            case GameManager.GameState.DIALOGUE3:
+                Debug.Log("Dialogue 3 over");
+                gameManager.startNewRound();
+                break;
         }
         
     }

@@ -8,11 +8,12 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour
 {
     
-    [SerializeField] public enum GameState {PICKINGQUESTION, QUESTIONPICKED, DIALOGUE1, CHOICES, DIALOGUE2};
+    [SerializeField] public enum GameState {PICKINGQUESTION, QUESTIONPICKED, DIALOGUE1, CHOICES, DIALOGUE2, DIALOGUE3, WAITING};
 
     public GameState currentGameState;
 
     public QuestionManager.Question pickedQuestion;
+    public bool guessWasCorrect = false;
 
 
     [SerializeField] public QuestionManager questionManager;
@@ -20,11 +21,11 @@ public class GameManager : MonoBehaviour
 
     public QuestionManager.Question[] questionChoices;
 
-    private int curRound;
-    private int targetRound;
-    private int numWrongGuesses;
+    private int curRound = 0;
+    private int targetRound = 5;
+    private int numWrongGuesses = 0;
 
-    private int curShowRating;
+    private int curShowRating = 0;
 
     private int isPicking;
 
@@ -53,7 +54,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI c3PanelText;
     [SerializeField] GameObject c4Panel;
     [SerializeField] TextMeshProUGUI c4PanelText;
+
+    [SerializeField] TextMeshProUGUI roundText;
+    [SerializeField] TextMeshProUGUI ratingsText;
     
+    private void updateRoundText() {
+        roundText.text = "ROUND: " + curRound + "/" + targetRound;
+    }
+
+    private void updateRatingsText() {
+        ratingsText.text = "RATINGS: " + curShowRating + "/100";
+    }
 
     private void handleQuestionButtonUI() {
 
@@ -115,9 +126,11 @@ public class GameManager : MonoBehaviour
         showChoicePanels();
         // Handle dialogue
         string response = "";
-        if (gotQuestionCorrect(pickedQuestion)) {
+        guessWasCorrect = gotQuestionCorrect(pickedQuestion);
+        if (guessWasCorrect) {
             response = pickedQuestion.correctResponses[0];
         } else {
+            numWrongGuesses++;
             response = pickedQuestion.incorrectResponses[0];
         }
 
@@ -127,7 +140,11 @@ public class GameManager : MonoBehaviour
             };
         
         dialogueManager.HandleDialogue(dialogueSentences);
+    }
 
+    private string getLivesLeftSentence() {
+        string ret = "STEVE: You have " + (3-numWrongGuesses) + " lives left, Paul.";
+        return ret;
     }
 
     private bool gotQuestionCorrect(QuestionManager.Question question) {
@@ -138,23 +155,48 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    public IEnumerator handleResponse() {
+        Debug.Log("handleResponse()...");
+        yield return new WaitForSeconds(1f);
+        string hostResponse = "";
+        if (guessWasCorrect) {
+            hostResponse = "STEVE: That's right!";
+        } else {
+            hostResponse = "STEVE: Sorry Paul, but that's incorrect.";
+        }
+        string livesLeftSentence = getLivesLeftSentence();
+        string[] hostResponseSentences = {
+            hostResponse,
+            livesLeftSentence
+        };
+        dialogueManager.HandleDialogue(hostResponseSentences);
+    }
+    
+    public void startNewRound() {
+        Debug.Log("startNewRound()...");
+        curRound++;
+        updateRoundText();
+        updateRatingsText();
+        hideChoicePanels();
+        hideQuestionButtons();
+        dialogueManager.hideDialogueBox();
+        questionChoices = questionManager.getQuestionChoices(curRound);
+        handleQuestionButtonUI();
+        currentGameState = GameState.PICKINGQUESTION;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        dialogueManager.hideDialogueBox();
-        hideChoicePanels();
-        hideQuestionButtons();
         questionManager.populateQuestionsList();
-        curRound = 0;
-        targetRound = 9;
-        curShowRating = 0;
-        questionChoices = questionManager.getQuestionChoices(curRound);
-        handleQuestionButtonUI();
+        startNewRound();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (currentGameState == GameState.QUESTIONPICKED) {
             hideQuestionButtons();
             dialogueManager.showDialogueBox();
@@ -170,7 +212,9 @@ public class GameManager : MonoBehaviour
             currentGameState = GameState.DIALOGUE2;
             StartCoroutine(handleContestantChoices());
         }
+
     }
+
     
 
 
