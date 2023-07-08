@@ -1,0 +1,261 @@
+{
+    "questions": [
+
+        {
+            "questionText": "TEST QUESTION TEXT",
+            "choices": [
+                "a1", "a2", "a3", "a4"
+            ],
+            "answer": "a1",
+            "entertainmentValue": 1,
+            "difficulty": 9,
+
+            "correctResponses": [
+                "a1 is my final answer"
+            ],
+
+            "incorrectResponses": [
+                "I dunno, I'll go with a4"
+            ]
+        },
+
+        {
+            "questionText": "Who painted the Mona Lisa?",
+            "choices": [
+                "Leonardo da Vinci", "Edvard Munch", "Salvador Dali", "Michelangelo"
+            ],
+            "answer": "Leonardo da Vinci",
+            "entertainmentValue": 2,
+            "difficulty": 0,
+
+            "correctResponses": [
+                "Easy. Leonardo da Vinci. Final answer."
+            ],
+
+            "incorrectResponses": [
+                "I don't really know much about paintings...    Let's go with Salvador Dali"
+            ]
+        },
+
+        {
+            "questionText": "What sport is Michael Jordan famous for playing?",
+            "choices": [
+                "Football", "Tennis", "Baseball", "Basketball"
+            ],
+            "answer": "Basketball",
+            "entertainmentValue": 3,
+            "difficulty": 0,
+
+            "correctResponses": [
+                "This one is easy for me. The answer is basketball."
+            ],
+
+            "incorrectResponses": [
+                "Do I look like I know sports? I guess I'll pick football."
+            ]
+        },
+
+        {
+            "questionText": "Which of the following animals would you find on a farm?",
+            "choices": [
+                "Bear", "Tiger", "Chicken", "Dragon"
+            ],
+            "answer": "Chicken",
+            "entertainmentValue": 1,
+            "difficulty": 0,
+
+            "correctResponses": [
+                "I'm a massive farm fan. Chicken. Final answer."
+            ],
+
+            "incorrectResponses": [
+                "It has to be dragon."
+            ]
+        },
+
+        {
+            "questionText": "What is the most populated state in the United States?",
+            "choices": [
+                "New York", "California", "Georgia", "Alabama"
+            ],
+            "answer": "California",
+            "entertainmentValue": 2,
+            "difficulty": 0,
+
+            "correctResponses": [
+                "I'm gonna go with California on this one."
+            ],
+
+            "incorrectResponses": [
+                "New York has got to be the most populated. Have you seen that place?"
+            ]
+        },
+
+        {
+            "questionText": "Which of the following is not a primary color?",
+            "choices": [
+                "Red", "Yellow", "Blue", "Green"
+            ],
+            "answer": "Green",
+            "entertainmentValue": 1,
+            "difficulty": 0,
+
+            "correctResponses": [
+                "Definitely green."
+            ],
+
+            "incorrectResponses": [
+                "Red."
+            ]
+        },
+
+        {
+            "questionText": "What is the name of Scooby-Doo's crew?",
+            "choices": [
+                "Mystery Gang", "Crime Crew", "Meddling Kids", "Puppy Pals"
+            ],
+            "answer": "Mystery Gang",
+            "entertainmentValue": 3,
+            "difficulty": 0,
+
+            "correctResponses": [
+                "I'm pretty sure that it's the Mystery Gang."
+            ],
+
+            "incorrectResponses": [
+                "Aren't they the Meddling Kids?"
+            ]
+        },
+
+        {
+            "questionText": "Which of the following is not a Pokemon?",
+            "choices": [
+                "Pikachu", "Eevee", "Zelda", "Magikarp"
+            ],
+            "answer": "Zelda",
+            "entertainmentValue": 2,
+            "difficulty": 0,
+
+            "correctResponses": [
+                "Zelda is a princess, not a Pokemon!"
+            ],
+
+            "incorrectResponses": [
+                "I've never heard of Eevee so I'll pick that one."
+            ]
+        },
+
+        {
+            "questionText": "What is the theme for GMTK Game Jam 2023?",
+            "choices": [
+                "Strength In Numbers", "On Fire", "Roles Reversed", "Day and Night"
+            ],
+            "answer": "Roles Reversed",
+            "entertainmentValue": 4,
+            "difficulty": 1,
+
+            "correctResponses": [
+                "Everybody knows that this year's theme is Roles Reversed."
+            ],
+
+            "incorrectResponses": [
+                "I don't even know what a game jam is. I'll guess 'On Fire'"
+            ]
+        },
+
+        {
+            "questionText": "What group sang the hit song Y.M.C.A.?",
+            "choices": [
+                "The Strokes", "The Beatles", "Ginger Root", "Village People"
+            ],
+            "answer": "Village People",
+            "entertainmentValue": 3,
+            "difficulty": 1,
+
+            "correctResponses": [
+                "Oh I love that song! The Village People sang it. Final answer."
+            ],
+
+            "incorrectResponses": [
+                "I hate music. Next question."
+            ]
+        },
+
+        {
+            "questionText": "Who founded Microsoft?",
+            "choices": [
+                "Steve Jobs", "Bill Gates", "Elon Musk", "Mark Zuckerberg"
+            ],
+            "answer": "Bill Gates",
+            "entertainmentValue": 2,
+            "difficulty": 1,
+
+            "correctResponses": [
+                "Bill Gates founded Microsoft. I'm not that dumb, Steve."
+            ],
+
+            "incorrectResponses": [
+                "Steve Jobs founded Microsoft, right?"
+            ]
+        },
+
+        {
+            "questionText": "Where does Spongebob live?",
+            "choices": [
+                "Djibouti", "Fish City", "Glove World", "Bikini Bottom"
+            ],
+            "answer": "Bikini Bottom",
+            "entertainmentValue": 4,
+            "difficulty": 1,
+
+            "correctResponses": [
+                "Steve you need to give me harder questions. It's Bikini Bottom."
+            ],
+
+            "incorrectResponses": [
+                "I'm pretty sure that he's from Djibouti."
+            ]
+        },
+
+        {
+            "questionText": "Which of these basketball players is shorter than 7 feet tall?",
+            "choices": [
+                "Yao Ming", "Shaq", "LeBron James", "Victor Wembanyama"
+            ],
+            "answer": "LeBron James",
+            "entertainmentValue": 3,
+            "difficulty": 2,
+
+            "correctResponses": [
+                "I know that LeBron is tall, but there's no way he's 7 feet tall. LeBron is my answer."
+            ],
+
+            "incorrectResponses": [
+                "I played Shaq Fu and Shaq wasn't that tall. I pick Shaq."
+            ]
+        },
+
+        {
+            "questionText": "Which of these mammals has no vocal chords?",
+            "choices": [
+                "Cat", "Giraffe", "Rhino", "Dog"
+            ],
+            "answer": "Giraffe",
+            "entertainmentValue": 5,
+            "difficulty": 4,
+
+            "correctResponses": [
+                "This is a tough one. I think the answer is Giraffe."
+            ],
+
+            "incorrectResponses": [
+                "I think the answer is Rhino."
+            ]
+        }
+
+
+
+
+
+    ]
+}
