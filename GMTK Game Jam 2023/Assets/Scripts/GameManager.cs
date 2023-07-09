@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,22 +23,23 @@ public class GameManager : MonoBehaviour
     public QuestionManager.Question[] questionChoices;
 
     private int curRound = 0;
-    private int targetRound = 5;
+    [SerializeField] private int targetRound;
     
     private int numWrongGuesses = 0;
 
     private int curShowRating = 0;
-    private int targetShowRating = 50;
+    [SerializeField] private int targetShowRating;
 
     private int isPicking;
 
     private int pickedQuestionNum;
 
-    private void showQuestionButtons() {
+    private void showQuestionUI() {
         q1Button.gameObject.SetActive(true);
         q2Button.gameObject.SetActive(true);
         q3Button.gameObject.SetActive(true);
         q4Button.gameObject.SetActive(true);
+        pickQuestionText.gameObject.SetActive(true);
     }
 
     [SerializeField] Button q1Button;
@@ -59,6 +61,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI roundText;
     [SerializeField] TextMeshProUGUI ratingsText;
+    [SerializeField] TextMeshProUGUI levelCompleteText;
+
+    [SerializeField] TextMeshProUGUI gameOverText;
+
+    [SerializeField] TextMeshProUGUI pickQuestionText;
+
+
     
     private void updateRoundText() {
         roundText.text = "ROUND: " + curRound + "/" + targetRound;
@@ -84,7 +93,7 @@ public class GameManager : MonoBehaviour
             curText.text += "EV: " + questionChoices[i].entertainmentValue + "\n";
         }
         currentGameState = GameState.PICKINGQUESTION;
-        showQuestionButtons();
+        showQuestionUI();
     }
 
     public void questionButtonOnClick(QuestionManager.Question question) {
@@ -93,11 +102,12 @@ public class GameManager : MonoBehaviour
         currentGameState = GameState.QUESTIONPICKED;
     }
 
-    private void hideQuestionButtons() {
+    private void hideQuestionUI() {
         q1Button.gameObject.SetActive(false);
         q2Button.gameObject.SetActive(false);
         q3Button.gameObject.SetActive(false);
         q4Button.gameObject.SetActive(false);
+        pickQuestionText.gameObject.SetActive(false);
     }
 
     #region Choice Panels
@@ -174,9 +184,28 @@ public class GameManager : MonoBehaviour
         };
         dialogueManager.HandleDialogue(hostResponseSentences);
     }
+
+    private void handleEndOfLevel() {
+        dialogueManager.hideDialogueBox();
+        updateRatingScore(pickedQuestion, guessWasCorrect);
+        updateRoundText();
+        updateRatingsText();
+        hideChoicePanels();
+        hideQuestionUI();
+        if (curShowRating >= targetShowRating) {
+            levelCompleteText.gameObject.SetActive(true);
+        } else {
+            gameOverText.gameObject.SetActive(true);
+        }
+        
+    }
     
     public void startNewRound() {
         Debug.Log("startNewRound()...");
+        if (curRound == targetRound) {
+            handleEndOfLevel();
+            return;
+        }
         curRound++;
         if (curRound != 1) {
             updateRatingScore(pickedQuestion, guessWasCorrect);
@@ -184,7 +213,7 @@ public class GameManager : MonoBehaviour
         updateRoundText();
         updateRatingsText();
         hideChoicePanels();
-        hideQuestionButtons();
+        hideQuestionUI();
         dialogueManager.hideDialogueBox();
         questionChoices = questionManager.getQuestionChoices(curRound);
         handleQuestionButtonUI();
@@ -205,6 +234,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levelCompleteText.gameObject.SetActive(false);
+        gameOverText.gameObject.SetActive(false);
         questionManager.populateQuestionsList();
         startNewRound();
         
@@ -215,7 +246,7 @@ public class GameManager : MonoBehaviour
     {
 
         if (currentGameState == GameState.QUESTIONPICKED) {
-            hideQuestionButtons();
+            hideQuestionUI();
             dialogueManager.showDialogueBox();
             currentGameState = GameState.DIALOGUE1;
             string[] dialogueSentences = {
@@ -233,7 +264,9 @@ public class GameManager : MonoBehaviour
     }
 
     
-
+    private void loadLevel2() {
+        SceneManager.LoadScene("Level2");
+    }
 
 
 

@@ -13,14 +13,14 @@ public class DialogueManager : MonoBehaviour {
     [SerializeField] private GameObject dialogueTextBox;
     [SerializeField] private bool inDialogue;
 
-    void Start() {
+    void Awake() {
         inDialogue = false;
         sentenceQueue = new Queue<string>();
     }
 
     void Update() {
         if (inDialogue) {
-            if (Input.GetKeyDown("space")) {
+            if (Input.GetMouseButtonDown(0)) {
                 DisplayNextSentence();
             }
         }

@@ -521,6 +521,222 @@
             "incorrectResponses": [
                 "Rust sounds old. Let's go with that one."
             ]
+        },
+
+        {
+            "questionText": "Which of the following is NOT a Pokemon game?",
+            "choices": [
+                "Moon", "Emerald", "Yellow", "Dark"
+            ],
+            "answer": "Dark",
+            "entertainmentValue": 4,
+            "difficulty": 5,
+
+            "correctResponses": [
+                "Pokemon Dark is not a game."
+            ],
+
+            "incorrectResponses": [
+                "It was Red and Blue. There's no Pokemon Yellow."
+            ]
+        },
+
+        {
+            "questionText": "What video game franchise features Dr. Wily as a villain?",
+            "choices": [
+                "Super Mario", "Mega Man", "The Sims", "TMNT"
+            ],
+            "answer": "Mega Man",
+            "entertainmentValue": 5,
+            "difficulty": 5,
+
+            "correctResponses": [
+                "I only know this one because I play Mega Man in Smash. The answer is Mega Man."
+            ],
+
+            "incorrectResponses": [
+                "I think that the answer is Super Mario."
+            ]
+        },
+
+        {
+            "questionText": "What is my favorite color?",
+            "choices": [
+                "Red", "Black", "Purple", "Green"
+            ],
+            "answer": "Green",
+            "entertainmentValue": 8,
+            "difficulty": 7,
+
+            "correctResponses": [
+                "Green is surely your favorite color. Just look at your sweater!"
+            ],
+
+            "incorrectResponses": [
+                "How should I know? Purple, I guess."
+            ]
+        },
+
+        {
+            "questionText": "Which of these comes from a fruit?",
+            "choices": [
+                "Cashews", "Cheese", "Candy", "Water"
+            ],
+            "answer": "Cashews",
+            "entertainmentValue": 3,
+            "difficulty": 6,
+
+            "correctResponses": [
+                "Did you know that cashews come from a fruit?"
+            ],
+
+            "incorrectResponses": [
+                "I guess technically water CAN come from a fruit. That's my answer."
+            ]
+        },
+
+        {
+            "questionText": "Which of these colleges has the lowest acceptance rate?",
+            "choices": [
+                "Rice University", "MIT", "Yale", "Carnegie Mellon"
+            ],
+            "answer": "MIT",
+            "entertainmentValue": 6,
+            "difficulty": 5,
+
+            "correctResponses": [
+                "MIT is for nerds, so that must be the answer."
+            ],
+
+            "incorrectResponses": [
+                "Ain't nobody getting into Yale. Yale is my final answer, Steve."
+            ]
+        },
+
+        {
+            "questionText": "Who painted the ceiling of the Sistine Chapel",
+            "choices": [
+                "Leonardo da Vinci", "Steve Marvey", "Socrates", "Michelangelo"
+            ],
+            "answer": "Michelangelo",
+            "entertainmentValue": 7,
+            "difficulty": 8,
+
+            "correctResponses": [
+                "I am sure that it was Michelangelo."
+            ],
+
+            "incorrectResponses": [
+                "Leonardo da Vinci."
+            ]
+        },
+
+        {
+            "questionText": "Which of these characters is NOT playable in Super Smash Bros?",
+            "choices": [
+                "Waluigi", "Dr. Mario", "Larry Koopa", "Daisy"
+            ],
+            "answer": "Waluigi",
+            "entertainmentValue": 7,
+            "difficulty": 7,
+
+            "correctResponses": [
+                "I wish that Waluigi was in that game. Waluigi is my answer."
+            ],
+
+            "incorrectResponses": [
+                "There's no shot that you can play Larry Koopa. Larry Koopa is my answer."
+            ]
+        },
+
+        {
+            "questionText": "What is the fifth digit of pi?",
+            "choices": [
+                "5", "4", "1", "8"
+            ],
+            "answer": "5",
+            "entertainmentValue": 6,
+            "difficulty": 7,
+
+            "correctResponses": [
+                "I know that pi is 22/7. That would mean pi is about 3.14159. 5 is my answer."
+            ],
+
+            "incorrectResponses": [
+                "Probably 8 or something idk."
+            ]
+        },
+
+        {
+            "questionText": "What is the name of Scooby-Doo's sister?",
+            "choices": [
+                "Doobie-Doo", "Moody-Doo", "Ruby-Doo", "Scooby-Boo"
+            ],
+            "answer": "",
+            "entertainmentValue": 10,
+            "difficulty": 8,
+
+            "correctResponses": [
+                "I think I remember this one. Ruby-Doo is my answer."
+            ],
+
+            "incorrectResponses": [
+                "I have no idea, Steve. I'm gonna guess Moody-Doo."
+            ]
+        },
+
+        {
+            "questionText": "How good of a developer is the creator of this game?",
+            "choices": [
+                "Pretty good", "Decent", "Meh", "Garbo-mode"
+            ],
+            "answer": "Garbo-mode",
+            "entertainmentValue": 10,
+            "difficulty": 9,
+
+            "correctResponses": [
+                "Have you seen my sprite? Easily garbo-mode."
+            ],
+
+            "incorrectResponses": [
+                "I think he's pretty good."
+            ]
+        },
+
+        {
+            "questionText": "What's 9 + 10?",
+            "choices": [
+                "21", "19", "21", "21"
+            ],
+            "answer": "19",
+            "entertainmentValue": 9,
+            "difficulty": 9,
+
+            "correctResponses": [
+                "Steve, I'm not a child. The answer is 19."
+            ],
+
+            "incorrectResponses": [
+                "If you remember to carry the 1, you get 21. That's my answer."
+            ]
+        },
+
+        {
+            "questionText": "What is the primary ingredient in hummus?",
+            "choices": [
+                "Butter", "Eggs", "Chickpeas", "Potatoes"
+            ],
+            "answer": "Chickpeas",
+            "entertainmentValue": 8,
+            "difficulty": 9,
+
+            "correctResponses": [
+                "Chickpeas is my answer."
+            ],
+
+            "incorrectResponses": [
+                "Butter is my answer."
+            ]
         }
 
 
