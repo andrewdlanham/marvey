@@ -75,7 +75,7 @@ public class QuestionManager : MonoBehaviour
 
     public Question[] getQuestionChoices(int round) {
         Question[] questionChoices = new Question[4];
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 3; i++) {
             int difficulty = Random.Range(round - 1, round + 2);
             questionChoices[i] = getRandomQuestion(difficulty);
         }

@@ -68,6 +68,10 @@ public class DialogueManager : MonoBehaviour {
                 Debug.Log("Dialogue 3 over");
                 gameManager.startNewRound();
                 break;
+            case GameManager.GameState.INSTRUCTIONS:
+                Debug.Log("Instructions over");
+                gameManager.currentGameState = GameManager.GameState.INSTRUCTIONSDONE;
+                break;
         }
         
     }

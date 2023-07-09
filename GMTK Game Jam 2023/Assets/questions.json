@@ -317,7 +317,7 @@
             "difficulty": 5,
 
             "correctResponses": [
-                "I don't even know who Harry S. Truman is. It's gotaa be him."
+                "I don't even know who Harry S. Truman is. It's gotta be him."
             ],
 
             "incorrectResponses": [
@@ -614,7 +614,7 @@
         },
 
         {
-            "questionText": "Who painted the ceiling of the Sistine Chapel",
+            "questionText": "Who painted the ceiling of the Sistine Chapel?",
             "choices": [
                 "Leonardo da Vinci", "Steve Marvey", "Socrates", "Michelangelo"
             ],

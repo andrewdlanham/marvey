@@ -9,14 +9,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     
-    [SerializeField] public enum GameState {PICKINGQUESTION, QUESTIONPICKED, DIALOGUE1, CHOICES, DIALOGUE2, DIALOGUE3, WAITING};
+    [SerializeField] public enum GameState {INSTRUCTIONS, INSTRUCTIONSDONE, PICKINGQUESTION, QUESTIONPICKED, DIALOGUE1, CHOICES, DIALOGUE2, DIALOGUE3, WAITING, LEVELCOMPLETE, LOADING};
 
     public GameState currentGameState;
 
     public QuestionManager.Question pickedQuestion = null;
     public bool guessWasCorrect = false;
 
-
+    
     [SerializeField] public QuestionManager questionManager;
     [SerializeField] public DialogueManager dialogueManager;
 
@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     private int curShowRating = 0;
     [SerializeField] private int targetShowRating;
 
+    [SerializeField] private int levelNum;
+    [SerializeField] private string contestantName;
+
     private int isPicking;
 
     private int pickedQuestionNum;
@@ -38,18 +41,18 @@ public class GameManager : MonoBehaviour
         q1Button.gameObject.SetActive(true);
         q2Button.gameObject.SetActive(true);
         q3Button.gameObject.SetActive(true);
-        q4Button.gameObject.SetActive(true);
         pickQuestionText.gameObject.SetActive(true);
     }
 
+    [SerializeField] Button mainMenuButton;
     [SerializeField] Button q1Button;
     [SerializeField] Button q2Button;
     [SerializeField] Button q3Button;
-    [SerializeField] Button q4Button;
+   
     [SerializeField] TextMeshProUGUI q1ButtonText;
     [SerializeField] TextMeshProUGUI q2ButtonText;
     [SerializeField] TextMeshProUGUI q3ButtonText;
-    [SerializeField] TextMeshProUGUI q4ButtonText;
+    
     [SerializeField] GameObject c1Panel;
     [SerializeField] TextMeshProUGUI c1PanelText;
     [SerializeField] GameObject c2Panel;
@@ -79,9 +82,9 @@ public class GameManager : MonoBehaviour
 
     private void handleQuestionButtonUI() {
 
-        Button[] buttons = {q1Button, q2Button, q3Button, q4Button};
-        TextMeshProUGUI[] texts = {q1ButtonText, q2ButtonText, q3ButtonText, q4ButtonText};
-        for (int i = 0; i < 4; i++) {
+        Button[] buttons = {q1Button, q2Button, q3Button};
+        TextMeshProUGUI[] texts = {q1ButtonText, q2ButtonText, q3ButtonText};
+        for (int i = 0; i < 3; i++) {
             Button curButton = buttons[i];
             TextMeshProUGUI curText = texts[i];
             QuestionManager.Question curQuestion = questionChoices[i];
@@ -106,7 +109,6 @@ public class GameManager : MonoBehaviour
         q1Button.gameObject.SetActive(false);
         q2Button.gameObject.SetActive(false);
         q3Button.gameObject.SetActive(false);
-        q4Button.gameObject.SetActive(false);
         pickQuestionText.gameObject.SetActive(false);
     }
 
@@ -148,21 +150,21 @@ public class GameManager : MonoBehaviour
         }
 
         string[] dialogueSentences = {
-                "PAUL: Let's see here...",
-                response
+                contestantName + ": Let's see here...",
+                contestantName + ": " + response
             };
         
         dialogueManager.HandleDialogue(dialogueSentences);
     }
 
     private string getLivesLeftSentence() {
-        string ret = "STEVE: You have " + (3-numWrongGuesses) + " lives left, Paul.";
+        string ret = "STEVE: You have " + (3-numWrongGuesses) + " lives left, " + contestantName + ".";
         return ret;
     }
 
     private bool gotQuestionCorrect(QuestionManager.Question question) {
-        int correctPercent = 100;
-        correctPercent -= (question.difficulty * 10);
+        int correctPercent = 90;
+        correctPercent -= (question.difficulty * 5);
         float randomNum = Random.Range(0, 100);
         if (randomNum < correctPercent) return true;
         return false;
@@ -175,7 +177,7 @@ public class GameManager : MonoBehaviour
         if (guessWasCorrect) {
             hostResponse = "STEVE: That's right!";
         } else {
-            hostResponse = "STEVE: Sorry Paul, but that's incorrect.";
+            hostResponse = "STEVE: Sorry " + contestantName + ", but that's incorrect.";
         }
         string livesLeftSentence = getLivesLeftSentence();
         string[] hostResponseSentences = {
@@ -192,17 +194,18 @@ public class GameManager : MonoBehaviour
         updateRatingsText();
         hideChoicePanels();
         hideQuestionUI();
-        if (curShowRating >= targetShowRating) {
-            levelCompleteText.gameObject.SetActive(true);
-        } else {
+        if (curShowRating < targetShowRating || numWrongGuesses == 3) {
             gameOverText.gameObject.SetActive(true);
+            mainMenuButton.gameObject.SetActive(true);
+        } else {
+            levelCompleteText.gameObject.SetActive(true);
+            currentGameState = GameState.LEVELCOMPLETE;
         }
-        
     }
     
     public void startNewRound() {
         Debug.Log("startNewRound()...");
-        if (curRound == targetRound) {
+        if (curRound == targetRound || numWrongGuesses == 3) {
             handleEndOfLevel();
             return;
         }
@@ -231,13 +234,16 @@ public class GameManager : MonoBehaviour
         curShowRating += (int) questionScore;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    
+    void Awake()
     {
-        levelCompleteText.gameObject.SetActive(false);
-        gameOverText.gameObject.SetActive(false);
-        questionManager.populateQuestionsList();
-        startNewRound();
+        if (currentGameState != GameState.INSTRUCTIONS) {
+            mainMenuButton.gameObject.SetActive(false);
+            levelCompleteText.gameObject.SetActive(false);
+            gameOverText.gameObject.SetActive(false);
+            questionManager.populateQuestionsList();
+            startNewRound();
+        }
         
     }
 
@@ -261,12 +267,40 @@ public class GameManager : MonoBehaviour
             StartCoroutine(handleContestantChoices());
         }
 
+        if (currentGameState == GameState.LEVELCOMPLETE) {
+            currentGameState = GameState.LOADING;
+            if (levelNum == 1) {
+                StartCoroutine(loadLevel2());
+            } else if (levelNum == 2) {
+                StartCoroutine(loadLevel3());
+            } else if (levelNum == 3) {
+                StartCoroutine(loadOutro());
+            }
+        }
+
     }
 
-    
-    private void loadLevel2() {
+
+    IEnumerator loadLevel2() {
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Level2");
     }
+
+    IEnumerator loadLevel3() {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("Level3");
+    }
+
+    IEnumerator loadOutro() {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("Outro");
+    }
+
+    public void mainMenuButtonOnClick() {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+
 
 
 
