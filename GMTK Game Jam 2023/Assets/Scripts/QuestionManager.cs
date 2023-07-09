@@ -39,7 +39,8 @@ public class QuestionManager : MonoBehaviour
             questionsList.Add(new List<Question>{});
         }
         
-        string questionsFilePath = "Assets/questions.json";
+        string questionsFilePath = Path.Combine(Application.streamingAssetsPath, "questions.json");
+        
         Debug.Log("populateQuestionsList()...");
         //Debug.Log("questionsFilePath: " + questionsFilePath);
         string data = File.ReadAllText(questionsFilePath);
