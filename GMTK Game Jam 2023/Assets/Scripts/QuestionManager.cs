@@ -60,6 +60,7 @@ public class QuestionManager : MonoBehaviour
     }
 
     public Question getRandomQuestion(int round) {
+
         int numPossibleQuestions = questionsList[round].Count;
         //Debug.Log("round: " + round);
         //Debug.Log("numPossibleQuestions: " + numPossibleQuestions);
@@ -75,7 +76,8 @@ public class QuestionManager : MonoBehaviour
     public Question[] getQuestionChoices(int round) {
         Question[] questionChoices = new Question[4];
         for (int i = 0; i < 4; i++) {
-            questionChoices[i] = getRandomQuestion(round);
+            int difficulty = Random.Range(round - 1, round + 2);
+            questionChoices[i] = getRandomQuestion(difficulty);
         }
         return questionChoices;
     }

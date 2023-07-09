@@ -2,20 +2,20 @@
     "questions": [
 
         {
-            "questionText": "TEST QUESTION TEXT",
+            "questionText": "",
             "choices": [
-                "a1", "a2", "a3", "a4"
+                "", "", "", ""
             ],
-            "answer": "a1",
-            "entertainmentValue": 1,
+            "answer": "",
+            "entertainmentValue": 9,
             "difficulty": 9,
 
             "correctResponses": [
-                "a1 is my final answer"
+                ""
             ],
 
             "incorrectResponses": [
-                "I dunno, I'll go with a4"
+                ""
             ]
         },
 
@@ -251,7 +251,281 @@
             "incorrectResponses": [
                 "I think the answer is Rhino."
             ]
+        },
+
+        {
+            "questionText": "When was the iPod released?",
+            "choices": [
+                "1999", "2001", "2003", "2004"
+            ],
+            "answer": "2001",
+            "entertainmentValue": 5,
+            "difficulty": 3,
+
+            "correctResponses": [
+                "I actually remember buying one in 2001. 2001 is the correct answer."
+            ],
+
+            "incorrectResponses": [
+                "The iPod is pretty old, right? I pick 1999."
+            ]
+        },
+
+        {
+            "questionText": "How many Japanese prefectures are there?",
+            "choices": [
+                "10", "18", "29", "47"
+            ],
+            "answer": "47",
+            "entertainmentValue": 3,
+            "difficulty": 5,
+
+            "correctResponses": [
+                "I don't know this one. I'm just gonna guess 47."
+            ],
+
+            "incorrectResponses": [
+                "Well 29 and 47 are way too many. 18 is my final answer."
+            ]
+        },
+
+        {
+            "questionText": "Who let the dogs out?",
+            "choices": [
+                "Beastie Boys", "Baha Men", "Eminem", "Snoop Dog"
+            ],
+            "answer": "Baha Men",
+            "entertainmentValue": 6,
+            "difficulty": 5,
+
+            "correctResponses": [
+                "Baha Men let the dogs out."
+            ],
+
+            "incorrectResponses": [
+                "It has to be Snoop Dog. I mean \"Dog\" is in his name!"
+            ]
+        },
+
+        {
+            "questionText": "Which of these presidents is NOT on Mount Rushmore?",
+            "choices": [
+                "Abraham Lincoln", "Thomas Jefferson", "George Washington", "Harry S. Truman"
+            ],
+            "answer": "Harry S. Truman",
+            "entertainmentValue": 4,
+            "difficulty": 5,
+
+            "correctResponses": [
+                "I don't even know who Harry S. Truman is. It's gotaa be him."
+            ],
+
+            "incorrectResponses": [
+                "George Washington is too old to be on there. That's my answer."
+            ]
+        },
+
+        {
+            "questionText": "Which of these characters is NOT playable in the original Super Mario Kart?",
+            "choices": [
+                "Donkey Kong", "Peach", "Koopa Troopa", "Luigi"
+            ],
+            "answer": "Donkey Kong",
+            "entertainmentValue": 5,
+            "difficulty": 5,
+
+            "correctResponses": [
+                "Donkey Kong Jr. is in that game, not Donkey Kong!"
+            ],
+
+            "incorrectResponses": [
+                "No way Koopa Troopa made the cut."
+            ]
+        },
+
+        {
+            "questionText": "In which of these shows do contestants vote each other out?",
+            "choices": [
+                "Big Brother", "Master Chef", "The Bachelor", "Jeopardy"
+            ],
+            "answer": "Big Brother",
+            "entertainmentValue": 6,
+            "difficulty": 2,
+
+            "correctResponses": [
+                "It's between Big Brother and The Bachelor for me. I'll go with Big Brother."
+            ],
+
+            "incorrectResponses": [
+                "I'm pretty sure they vote each other out on The Bachelor."
+            ]
+        },
+
+        {
+            "questionText": "What is the golf term for two under par?",
+            "choices": [
+                "Birdie", "Albatross", "Eagle", "Bogey"
+            ],
+            "answer": "Eagle",
+            "entertainmentValue": 3,
+            "difficulty": 2,
+
+            "correctResponses": [
+                "I may not look like it, but I'm an avid golfer. Eagle is the correct answer."
+            ],
+
+            "incorrectResponses": [
+                "Easy. Birdie is two under par."
+            ]
+        },
+
+        {
+            "questionText": "What is the capital of China?",
+            "choices": [
+                "Hong Kong", "Tokyo", "Beijing", "Seoul"
+            ],
+            "answer": "Beijing",
+            "entertainmentValue": 3,
+            "difficulty": 6,
+
+            "correctResponses": [
+                "I've been there five times, Steve. Beijing is the answer."
+            ],
+
+            "incorrectResponses": [
+                "It's gotta be Tokyo."
+            ]
+        },
+
+        {
+            "questionText": "Which of these is NOT one of the seven wonders of the world?",
+            "choices": [
+                "The Great Wall of China", "The Colosseum", "The Taj Mahal", "The Nile"
+            ],
+            "answer": "The Nile",
+            "entertainmentValue": 6,
+            "difficulty": 6,
+
+            "correctResponses": [
+                "The Nile is not one of the seven wonders. Final answer."
+            ],
+
+            "incorrectResponses": [
+                "I'm pretty sure they didn't build the Great Wall of China until recently. I pick that one."
+            ]
+        },
+
+        {
+            "questionText": "What is the chemical symbol for iron?",
+            "choices": [
+                "Ir", "Fe", "Au", "Na"
+            ],
+            "answer": "Fe",
+            "entertainmentValue": 3,
+            "difficulty": 3,
+
+            "correctResponses": [
+                "I think that this one is Fe."
+            ],
+
+            "incorrectResponses": [
+                "Surely it's \"Ir\", right?"
+            ]
+        },
+
+        {
+            "questionText": "Which of these is NOT a secondary color?",
+            "choices": [
+                "Green", "Yellow", "Orange", "Purple"
+            ],
+            "answer": "Yellow",
+            "entertainmentValue": 4,
+            "difficulty": 3,
+
+            "correctResponses": [
+                "Yellow is a primary color. Therefore, Yellow is the answer."
+            ],
+
+            "incorrectResponses": [
+                "I think it's green."
+            ]
+        },
+
+        {
+            "questionText": "Which of the following is a dog breed?",
+            "choices": [
+                "Affenpinscher", "Chartreux", "Korat", "Maine Coon"
+            ],
+            "answer": "Affenpinscher",
+            "entertainmentValue": 7,
+            "difficulty": 6,
+
+            "correctResponses": [
+                "Wow. This is a tough one, Steve. I'm gonna go with Affenpinscher."
+            ],
+
+            "incorrectResponses": [
+                "Wow. This ia a tough one, Steve. I'm gonna go with Korat."
+            ]
+        },
+
+        {
+            "questionText": "Quick! What's my full name?",
+            "choices": [
+                "Steve Marvey", "Steve Zarvey", "Steve Garvey", "Steve Parvey"
+            ],
+            "answer": "Steve Marvey",
+            "entertainmentValue": 9,
+            "difficulty": 7,
+
+            "correctResponses": [
+                "Steve Marvey"
+            ],
+
+            "incorrectResponses": [
+                "This is awkward. I don't really know. Steve Garvey?"
+            ]
+        },
+
+        {
+            "questionText": "Which of these is NOT a game engine?",
+            "choices": [
+                "Unity", "PyCharm", "Godot", "GameMaker"
+            ],
+            "answer": "PyCharm",
+            "entertainmentValue": 4,
+            "difficulty": 4,
+
+            "correctResponses": [
+                "A simpleton like me wouldn't know. I'll guess PyCharm."
+            ],
+
+            "incorrectResponses": [
+                "GameMaker is too obvious of a name. I bet that's not even real. I guess GameMaker."
+            ]
+        },
+
+        {
+            "questionText": "Which of the following programming languages was released first?",
+            "choices": [
+                "Java", "C", "Python", "Rust"
+            ],
+            "answer": "C",
+            "entertainmentValue": 6,
+            "difficulty": 5,
+
+            "correctResponses": [
+                "I know that C is ancient. C is my answer."
+            ],
+
+            "incorrectResponses": [
+                "Rust sounds old. Let's go with that one."
+            ]
         }
+
+
+
+
 
 
 

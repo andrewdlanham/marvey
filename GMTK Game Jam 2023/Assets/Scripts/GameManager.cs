@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public GameState currentGameState;
 
-    public QuestionManager.Question pickedQuestion;
+    public QuestionManager.Question pickedQuestion = null;
     public bool guessWasCorrect = false;
 
 
@@ -23,9 +23,11 @@ public class GameManager : MonoBehaviour
 
     private int curRound = 0;
     private int targetRound = 5;
+    
     private int numWrongGuesses = 0;
 
     private int curShowRating = 0;
+    private int targetShowRating = 50;
 
     private int isPicking;
 
@@ -63,7 +65,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void updateRatingsText() {
-        ratingsText.text = "RATINGS: " + curShowRating + "/100";
+        ratingsText.text = "RATINGS: " + curShowRating + "/" + targetShowRating;
     }
 
     private void handleQuestionButtonUI() {
@@ -76,7 +78,8 @@ public class GameManager : MonoBehaviour
             QuestionManager.Question curQuestion = questionChoices[i];
             curButton.onClick.AddListener(() => questionButtonOnClick(curQuestion));
             curText.text = "";
-            curText.text += "Q" + (i+1) + "\n";
+            //curText.text += "Q" + (i+1) + "\n";
+            curText.text += "?\n";
             curText.text += "Diff: " + questionChoices[i].difficulty + "\n";
             curText.text += "EV: " + questionChoices[i].entertainmentValue + "\n";
         }
@@ -120,7 +123,7 @@ public class GameManager : MonoBehaviour
     #endregion
 
     IEnumerator handleContestantChoices() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         Debug.Log("handleContestantChoices()");
         updateChoicePanels();
         showChoicePanels();
@@ -175,6 +178,9 @@ public class GameManager : MonoBehaviour
     public void startNewRound() {
         Debug.Log("startNewRound()...");
         curRound++;
+        if (curRound != 1) {
+            updateRatingScore(pickedQuestion, guessWasCorrect);
+        }
         updateRoundText();
         updateRatingsText();
         hideChoicePanels();
@@ -182,7 +188,18 @@ public class GameManager : MonoBehaviour
         dialogueManager.hideDialogueBox();
         questionChoices = questionManager.getQuestionChoices(curRound);
         handleQuestionButtonUI();
+        
         currentGameState = GameState.PICKINGQUESTION;
+    }
+
+    private void updateRatingScore(QuestionManager.Question question, bool correct) {
+        float questionScore = 7f;
+        float difficultyMult = 1 + ((float) question.difficulty * 0.1f);
+        int entertainmentValue = question.entertainmentValue;
+        Debug.Log("diffMul: " + difficultyMult);
+        questionScore *= difficultyMult;
+        questionScore += entertainmentValue;
+        curShowRating += (int) questionScore;
     }
 
     // Start is called before the first frame update
