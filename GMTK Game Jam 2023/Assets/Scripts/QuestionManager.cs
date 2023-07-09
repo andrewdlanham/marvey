@@ -35,10 +35,11 @@ public class QuestionManager : MonoBehaviour
     public void populateQuestionsList() {
 
         questionsList = new List<List<Question>>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             questionsList.Add(new List<Question>{});
         }
-        string questionsFilePath = Path.Combine(Application.dataPath, "questions.json");
+        
+        string questionsFilePath = "Assets/questions.json";
         Debug.Log("populateQuestionsList()...");
         //Debug.Log("questionsFilePath: " + questionsFilePath);
         string data = File.ReadAllText(questionsFilePath);

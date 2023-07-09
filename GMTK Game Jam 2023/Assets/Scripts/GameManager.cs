@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
             curText.text = "";
             //curText.text += "Q" + (i+1) + "\n";
             curText.text += "?\n";
-            curText.text += "Diff: " + questionChoices[i].difficulty + "\n";
+            curText.text += "Dif: " + questionChoices[i].difficulty + "\n";
             curText.text += "EV: " + questionChoices[i].entertainmentValue + "\n";
         }
         currentGameState = GameState.PICKINGQUESTION;
@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
 
     private bool gotQuestionCorrect(QuestionManager.Question question) {
         int correctPercent = 90;
-        correctPercent -= (question.difficulty * 5);
+        correctPercent -= (question.difficulty * 3);
         float randomNum = Random.Range(0, 100);
         if (randomNum < correctPercent) return true;
         return false;
@@ -237,6 +237,10 @@ public class GameManager : MonoBehaviour
     
     void Awake()
     {
+        StartCoroutine(testWait());    
+    }
+
+    void Start() {
         if (currentGameState != GameState.INSTRUCTIONS) {
             mainMenuButton.gameObject.SetActive(false);
             levelCompleteText.gameObject.SetActive(false);
@@ -244,8 +248,8 @@ public class GameManager : MonoBehaviour
             questionManager.populateQuestionsList();
             startNewRound();
         }
-        
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -298,6 +302,10 @@ public class GameManager : MonoBehaviour
 
     public void mainMenuButtonOnClick() {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    IEnumerator testWait() {
+        yield return new WaitForSeconds(2);
     }
 
 

@@ -43,7 +43,7 @@
                 "Football", "Tennis", "Baseball", "Basketball"
             ],
             "answer": "Basketball",
-            "entertainmentValue": 3,
+            "entertainmentValue": 1,
             "difficulty": 0,
 
             "correctResponses": [
@@ -80,7 +80,7 @@
             ],
             "answer": "California",
             "entertainmentValue": 2,
-            "difficulty": 0,
+            "difficulty": 4,
 
             "correctResponses": [
                 "I'm gonna go with California on this one."
@@ -116,7 +116,7 @@
             ],
             "answer": "Mystery Gang",
             "entertainmentValue": 3,
-            "difficulty": 0,
+            "difficulty": 2,
 
             "correctResponses": [
                 "I'm pretty sure that it's the Mystery Gang."
@@ -737,7 +737,26 @@
             "incorrectResponses": [
                 "Butter is my answer."
             ]
+        },
+
+        {
+            "questionText": "What is the best game from GMTK Game Jam 2023?",
+            "choices": [
+                "Marvey", "Marvey", "Marvey", "Not Marvey"
+            ],
+            "answer": "Marvey",
+            "entertainmentValue": 10,
+            "difficulty": 10,
+
+            "correctResponses": [
+                "I would have to say Marvey. It has such advanced skill-based gameplay mechanics and a beautiful retro pixel art style. How could any game be better?"
+            ],
+
+            "incorrectResponses": [
+                "Not Marvey."
+            ]
         }
+
 
 
 

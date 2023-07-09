@@ -13,14 +13,20 @@ public class DialogueManager : MonoBehaviour {
     [SerializeField] private GameObject dialogueTextBox;
     [SerializeField] private bool inDialogue;
 
+    private bool isTyping;
+
     void Awake() {
+        isTyping = false;
         inDialogue = false;
         sentenceQueue = new Queue<string>();
     }
 
     void Update() {
-        if (inDialogue) {
+        if (isTyping) {
+            return;
+        } else if (inDialogue) {
             if (Input.GetMouseButtonDown(0)) {
+                StopAllCoroutines();
                 DisplayNextSentence();
             }
         }
@@ -44,11 +50,13 @@ public class DialogueManager : MonoBehaviour {
     }
 
     IEnumerator TypeSentence(string sentence) {
+        isTyping = true;
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray()) {
             dialogueText.text += letter;
             yield return null;
         }
+        isTyping = false;
     }
 
     private void EndDialogue() {
