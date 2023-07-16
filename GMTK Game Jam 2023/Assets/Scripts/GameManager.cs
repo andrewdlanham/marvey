@@ -13,14 +13,14 @@ public class GameManager : MonoBehaviour
 
     public GameState currentGameState;
 
-    public QuestionManager.Question pickedQuestion = null;
+    public Question pickedQuestion = null;
     public bool guessWasCorrect = false;
 
     
     [SerializeField] public QuestionManager questionManager;
     [SerializeField] public DialogueManager dialogueManager;
 
-    public QuestionManager.Question[] questionChoices;
+    public Question[] questionChoices;
 
     private int curRound = 0;
     [SerializeField] private int targetRound;
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 3; i++) {
             Button curButton = buttons[i];
             TextMeshProUGUI curText = texts[i];
-            QuestionManager.Question curQuestion = questionChoices[i];
+            Question curQuestion = questionChoices[i];
             curButton.onClick.AddListener(() => questionButtonOnClick(curQuestion));
             curText.text = "";
             //curText.text += "Q" + (i+1) + "\n";
@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         showQuestionUI();
     }
 
-    public void questionButtonOnClick(QuestionManager.Question question) {
+    public void questionButtonOnClick(Question question) {
         Debug.Log("Question button clicked!");
         pickedQuestion = question;
         currentGameState = GameState.QUESTIONPICKED;
@@ -162,7 +162,7 @@ public class GameManager : MonoBehaviour
         return ret;
     }
 
-    private bool gotQuestionCorrect(QuestionManager.Question question) {
+    private bool gotQuestionCorrect(Question question) {
         int correctPercent = 90;
         correctPercent -= (question.difficulty * 3);
         float randomNum = Random.Range(0, 100);
@@ -224,7 +224,7 @@ public class GameManager : MonoBehaviour
         currentGameState = GameState.PICKINGQUESTION;
     }
 
-    private void updateRatingScore(QuestionManager.Question question, bool correct) {
+    private void updateRatingScore(Question question, bool correct) {
         float questionScore = 7f;
         float difficultyMult = 1 + ((float) question.difficulty * 0.1f);
         int entertainmentValue = question.entertainmentValue;
@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
 
     void Start() {
         if (currentGameState != GameState.INSTRUCTIONS) {
+            dialogueManager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
             mainMenuButton.gameObject.SetActive(false);
             levelCompleteText.gameObject.SetActive(false);
             gameOverText.gameObject.SetActive(false);

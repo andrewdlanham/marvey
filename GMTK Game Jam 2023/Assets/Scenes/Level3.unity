@@ -1591,7 +1591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4076388268787708996, guid: 0c9187fe91438c345988f8edcf676ef4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -11.570007
+      value: -11.570068
       objectReference: {fileID: 0}
     - target: {fileID: 4076388268787708996, guid: 0c9187fe91438c345988f8edcf676ef4, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2691,7 +2691,7 @@ MonoBehaviour:
     incorrectResponses: []
   guessWasCorrect: 0
   questionManager: {fileID: 1046792855}
-  dialogueManager: {fileID: 1056071365}
+  dialogueManager: {fileID: 0}
   questionChoices: []
   targetRound: 9
   targetShowRating: 110
