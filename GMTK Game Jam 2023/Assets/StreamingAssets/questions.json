@@ -400,7 +400,7 @@
         {
             "questionText": "Which of these is NOT one of the seven wonders of the world?",
             "choices": [
-                "The Great Wall of China", "The Colosseum", "The Taj Mahal", "The Nile"
+                "Machu Picchu", "The Colosseum", "The Taj Mahal", "The Nile"
             ],
             "answer": "The Nile",
             "entertainmentValue": 6,
@@ -411,7 +411,7 @@
             ],
 
             "incorrectResponses": [
-                "I'm pretty sure they didn't build the Great Wall of China until recently. I pick that one."
+                "I'm pretty sure they didn't build Machu Picchu until recently. I pick that one."
             ]
         },
 
